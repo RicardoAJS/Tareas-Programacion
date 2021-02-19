@@ -1,0 +1,83 @@
+import random 
+
+#Autor : Ricardo Adhiel Jacobo Sanjuan
+
+juego = { 
+
+    1: 'piedra', 
+
+    2: 'papel', 
+
+    3: 'tijeras', 
+
+    4: 'lagarto',
+
+    5: 'spock'
+} 
+resultado = { 
+    ('piedra','papel'): False,  
+
+    ('piedra','tijeras'): True,  
+
+    ('papel','piedra'): True, 
+
+    ('papel','tijeras'): False, 
+
+    ('tijeras','piedra'): False, 
+
+    ('tijeras','papel'): True,
+
+    ('tijera','lagarto'): True,
+
+    ('lagarto', 'tijeras') : False,
+
+    ('piedra','lagarto'): True,
+
+    ('lagarto','piedra'): False,
+
+    ('papel','spock') : True,
+
+    ('spock','papel'): False,
+
+    ('lagarto','papel'):True,
+
+    ('papel','lagarto'): False,
+
+    ('lagarto','spock'): True,
+
+    ('spock','lagarto'): False,
+
+    ('spock','tijeras'): True,
+
+    ('tijeras','spock'): False,
+
+    ('spock','piedra'): True,
+
+    ('piedra','spock'): False
+
+} 
+ganaste = 0
+perdiste = 0
+empates = 0
+salir = 0
+while salir == 0:
+  compu = random.randint(1,5) 
+  for clave,valor in juego.items(): 
+    print(clave,valor) 
+  jugador = int(input('Ingresa una opción')) 
+  print('Jugador eligió:',juego[jugador]) 
+  print('PC eligió:',juego[compu]) 
+  if juego[jugador] == juego[compu]: 
+    print("Empate!") 
+    empates = empates + 1
+  elif(resultado[(juego[jugador],juego[compu])]):
+    print("Ganaste!") 
+    ganaste = ganaste + 1
+  else: 
+    print("Perdiste!") 
+    perdiste = perdiste + 1
+  print("si quiere salir presione 1 y si quiere continuar presione 0")
+  salir = int(input("desea continuar?"))
+print(f"ganaste = {ganaste}")
+print(f"perdiste = {perdiste}")
+print(f"empataste = {empates}")
